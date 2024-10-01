@@ -1,0 +1,15 @@
+@import "styles/_variables.scss";
+
+.content_wrapper {
+  @include flex();
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.text_wrapper {
+  width: 100%;
+  height: auto;
+}

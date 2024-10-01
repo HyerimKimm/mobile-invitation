@@ -1,4 +1,4 @@
-import "@styles/_global.scss";
+import "@styles/global.scss";
 
 export const metadata = {
   title: "우리 결혼해요",
