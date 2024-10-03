@@ -16,16 +16,29 @@
   height: auto;
   position: absolute;
   bottom: 0;
+  color: $color_black;
+
+  @include flex(column, center, center);
+  gap: $spacing-2;
 }
 
 .name_wrapper {
-  @include flex(row, center, center);
   width: 100%;
   font-size: $fontsize-heading;
+
+  @include flex(row, center, center);
+  gap: $fontsize-heading;
+
+  > .patition {
+    height: $fontsize-heading;
+    width: 2px;
+    background-color: $color_primary;
+  }
 }
 
 .location_wrapper {
   @include flex(column, center, center);
   width: 100%;
   font-size: $fontsize-body;
+  line-height: 2rem;
 }

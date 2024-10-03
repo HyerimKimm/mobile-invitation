@@ -10,6 +10,7 @@ export default function TitleContents() {
       <div className={classes.text_wrapper}>
         <p className={classes.name_wrapper}>
           <span>홍길순</span>
+          <span className={classes.patition} />
           <span>홍길동</span>
         </p>
         <p className={classes.location_wrapper}>
