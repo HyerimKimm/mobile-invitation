@@ -1,15 +1,31 @@
 @import "styles/_variables.scss";
 
 .content_wrapper {
-  @include flex();
+  position: relative;
+  width: 100%;
 }
 
 .image {
   width: 100%;
   height: auto;
+  position: relative;
 }
 
 .text_wrapper {
   width: 100%;
   height: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.name_wrapper {
+  @include flex(row, center, center);
+  width: 100%;
+  font-size: $fontsize-heading;
+}
+
+.location_wrapper {
+  @include flex(column, center, center);
+  width: 100%;
+  font-size: $fontsize-body;
 }

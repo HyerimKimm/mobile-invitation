@@ -6,9 +6,16 @@ import classes from "./TitleContents.module.scss";
 export default function TitleContents() {
   return (
     <section className={classes.content_wrapper}>
+      <Image src={mainImage} alt="" className={classes.image} priority />
       <div className={classes.text_wrapper}>
-        <div>안녕하세요</div>
-        <div>반가워요</div>
+        <p className={classes.name_wrapper}>
+          <span>홍길순</span>
+          <span>홍길동</span>
+        </p>
+        <p className={classes.location_wrapper}>
+          <span>2030년 9월 12일 오후 1시 30분</span>
+          <span>엄청난 웨딩홀 2층 Marcy Hall</span>
+        </p>
       </div>
     </section>
   );
