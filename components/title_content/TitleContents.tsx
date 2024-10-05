@@ -1,6 +1,11 @@
 import Image from "next/image";
 import mainImage from "@assets/images/mainImage.png";
 import classes from "./TitleContents.module.scss";
+import { invitation } from "types/invitation";
+
+interface TitleContentsPropsType {
+  invitation: invitation
+}
 
 /* Todo : 나중에 이미지는 서버에서 가져와야 함 */
 export default function TitleContents() {
