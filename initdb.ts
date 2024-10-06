@@ -12,11 +12,7 @@ const dummyInvitations = [
         bride_mom_name: '홍길연',
         start_date: '2030-09-12',
         start_time: '13:00:00',
-        location_info: {
-            title: '엄청난 웨딩홀 2층 Marcy Hall',
-            detail: '서울 양천구 오목로3길 32',
-            tel: '02-2222-2222'
-        },
+        location_id: 1,
         parking_info: {
             location: '테크노마트 지하주차장 이용 (B3 ~ B7)',
             price: '2시간 무료주차이며, 이후 10분당 1000원이 부과됩니다.'
@@ -29,6 +25,15 @@ const dummyInvitations = [
     },
 ]
 
+const dummyLocations = [
+    {
+        id: 1,
+        title: '엄청난 웨딩홀 2층 Marcy Hall',
+        detail: '서울 양천구 오목로1길 12',
+        tel: '02-2222-2222'
+    }
+]
+
 db.prepare(`
     CREATE TABLE IF NOT EXISTS invitations (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -39,11 +44,36 @@ db.prepare(`
         bride_dad_name TEXT,
         bride_mom_name TEXT,
         start_date TEXT,
-        start_time TEXT
+        start_time TEXT,
+        location_id INTEGER
     )
 `).run();
 
-async function initData() {
+db.prepare(`
+    CREATE TABLE IF NOT EXISTS locations (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT,
+        detail TEXT,
+        tel TEXT
+    )
+`).run();
+
+async function initLocations() {
+    const stmt = db.prepare(`
+        INSERT INTO locations VALUES (
+            null,
+            @title,
+            @detail, 
+            @tel
+        )
+    `);
+
+    for(const location of dummyLocations) {
+        stmt.run(location);
+    }
+}
+
+async function initInvitations() {
     const stmt = db.prepare(`
         INSERT INTO invitations VALUES (
             null,
@@ -54,7 +84,8 @@ async function initData() {
             @bride_dad_name,
             @bride_mom_name,
             @start_date,
-            @start_time
+            @start_time,
+            @location_id
         )
     `);
 
@@ -63,4 +94,5 @@ async function initData() {
     }
 }
 
-initData();
+initLocations();
+initInvitations();

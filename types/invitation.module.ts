@@ -8,4 +8,12 @@ export interface Invitation {
     bride_mom_name: string, 
     start_date: string,
     start_time: string
+    location_id: Location
+}
+
+export interface Location {
+    id: number,
+    title: string,
+    detail: string,
+    tel: string
 }
