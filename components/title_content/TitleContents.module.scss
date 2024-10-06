@@ -1,8 +1,28 @@
 @import "styles/_variables.scss";
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(2px);
+  }
+  99% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .content_wrapper {
   position: relative;
   width: 100%;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .image {
