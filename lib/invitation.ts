@@ -1,10 +1,17 @@
 import sql from "better-sqlite3";
-import { invitation } from "types/invitation";
+import { Invitation } from "types/invitation";
+import generateError from "./generateError";
 
 const db = sql("mobile_invitation.db");
 
-export async function getInvitation(id: number){
+export async function getInvitation(id: number): Promise<Invitation | never>{
     await new Promise((resolve)=>setTimeout(resolve, 1000));
 
-    return db.prepare("SELECT * FROM invitations WHERE id = ?").get(id);
+    const result : Invitation = db.prepare("SELECT * FROM invitations WHERE id = ?").get(id) as Invitation;
+
+    if(result) {
+        return result;
+    } else {
+       generateError('잘못된 id입니다.', 0)
+    }
 }

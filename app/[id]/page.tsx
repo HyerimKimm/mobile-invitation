@@ -1,6 +1,7 @@
 import TitleContents from "@components/title_content/TitleContents";
 import { getInvitation } from "lib/invitation";
-import { invitation } from "types/invitation";
+import { Invitation } from "types/invitation";
+import { notFound } from "next/navigation";
 
 interface InvitationPageProps {
     params: {
@@ -11,10 +12,14 @@ interface InvitationPageProps {
 export default async function InvitationPage({ params }: InvitationPageProps) {
     const id = params.id;
 
-    const invitationInfo: invitation = await getInvitation(id);
+    let invitationInfo: Invitation | null;
 
-    console.log(id)
-    console.log(invitationInfo)
 
-    return <div><TitleContents invitation={invitationInfo}/></div>
+    try {
+        invitationInfo = await getInvitation(id);
+
+        return <div><TitleContents invitation={invitationInfo} /></div>
+    } catch (e) {
+        notFound();
+    }
 }

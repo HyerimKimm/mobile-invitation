@@ -32,6 +32,8 @@ const dummyInvitations = [
 db.prepare(`
     CREATE TABLE IF NOT EXISTS invitations (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        groom_name TEXT,
+        bride_name TEXT,
         groom_dad_name TEXT,
         groom_mom_name TEXT,
         bride_dad_name TEXT,
@@ -45,6 +47,8 @@ async function initData() {
     const stmt = db.prepare(`
         INSERT INTO invitations VALUES (
             null,
+            @groom_name,
+            @bride_name,
             @groom_dad_name,
             @groom_mom_name,
             @bride_dad_name,
