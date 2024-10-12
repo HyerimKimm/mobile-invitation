@@ -1,6 +1,6 @@
 import classes from "@app/page.module.scss";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 import { firebaseConfig } from "@firebase/firebaseConfig";
 
@@ -8,11 +8,10 @@ export default async function Home() {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  const querySnapshot = await getDocs(collection(db, "invitations"));
+  const q = doc(db, "invitations", "1");
+  const docSnap = await getDoc(q);
 
-  querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-  });
+  console.log(`${docSnap.id} => ${JSON.stringify(docSnap.data())}`);
 
   return (
     <main className={classes.page_wrapper}>
