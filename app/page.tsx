@@ -1,11 +1,12 @@
 import classes from "@app/page.module.scss";
 
 import { getInvitation } from "@firebase/invitation";
+import { Invitation } from "types/invitation.module";
 
 export default async function Home() {
-  const docSnap = getInvitation();
+  const data: Invitation = await getInvitation("1");
 
-  console.log(JSON.stringify((await docSnap).data()));
+  console.log(data);
 
   return (
     <main className={classes.page_wrapper}>

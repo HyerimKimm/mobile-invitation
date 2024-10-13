@@ -17,6 +17,8 @@ export default async function InvitationPage({ params }: InvitationPageProps) {
   try {
     invitationInfo = await getInvitation(id);
 
+    console.log(invitationInfo);
+
     return (
       <main>
         <TitleContents
