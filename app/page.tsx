@@ -1,17 +1,11 @@
 import classes from "@app/page.module.scss";
-import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-import { firebaseConfig } from "@firebase/firebaseConfig";
+import { getInvitation } from "@firebase/invitation";
 
 export default async function Home() {
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const docSnap = getInvitation();
 
-  const q = doc(db, "invitations", "1");
-  const docSnap = await getDoc(q);
-
-  console.log(`${docSnap.id} => ${JSON.stringify(docSnap.data())}`);
+  console.log(JSON.stringify((await docSnap).data()));
 
   return (
     <main className={classes.page_wrapper}>
