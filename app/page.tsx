@@ -1,10 +1,11 @@
 import classes from "@app/page.module.scss";
 
 import { getInvitation } from "@firebase/invitation";
-import { Invitation } from "types/invitation.module";
+import { Invitation, Location } from "types/invitation.module";
 
 export default async function Home() {
-  const data: Invitation = await getInvitation("1");
+  const data: { invitation: Invitation; location: Location } =
+    await getInvitation("1");
 
   console.log(data);
 

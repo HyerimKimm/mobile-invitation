@@ -1,11 +1,11 @@
 import TitleContents from "@components/title_content/TitleContents";
-import { getInvitation } from "lib/invitation";
+import { getInvitation } from "@firebase/invitation";
 import { Invitation, Location } from "types/invitation.module";
 import { notFound } from "next/navigation";
 
 interface InvitationPageProps {
   params: {
-    id: number;
+    id: string;
   };
 }
 
@@ -16,8 +16,6 @@ export default async function InvitationPage({ params }: InvitationPageProps) {
 
   try {
     invitationInfo = await getInvitation(id);
-
-    console.log(invitationInfo);
 
     return (
       <main>

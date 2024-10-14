@@ -8,11 +8,11 @@ export interface Invitation {
   bride_mom_name: string;
   start_date: string;
   start_time: string;
-  location_id: Location;
+  location_id: string;
 }
 
 export interface Location {
-  id: number;
+  id: number | string;
   title: string;
   detail: string;
   tel: string;
