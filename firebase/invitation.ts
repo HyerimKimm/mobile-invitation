@@ -6,6 +6,8 @@ import { firebaseConfig } from "@firebase/firebaseConfig";
 export async function getInvitation(
   id: string
 ): Promise<{ invitation: Invitation; location: Location }> {
+  console.log("Fetching Invitation Data...");
+
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
@@ -24,8 +26,6 @@ export async function getInvitation(
     id: locationQ.id,
     ...locationDocSnap.data(),
   } as Location;
-
-  console.log(location);
 
   return {
     invitation: invitation,
