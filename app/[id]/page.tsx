@@ -29,9 +29,3 @@ export default async function InvitationPage({ params }: InvitationPageProps) {
     notFound();
   }
 }
-
-export async function generateStaticParams() {
-  return [{ id: "example" }];
-}
-
-export const revalidate = 60; // 10초 동안 캐시된 데이터 사용

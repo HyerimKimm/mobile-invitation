@@ -9,6 +9,7 @@ export interface Invitation {
   start_date: string;
   start_time: string;
   location_id: string;
+  background_img_url: string;
 }
 
 export interface Location {
