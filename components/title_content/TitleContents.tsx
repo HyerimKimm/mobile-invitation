@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import mainImage from "@assets/images/mainImage.png";
 import classes from "./TitleContents.module.scss";
