@@ -1,4 +1,4 @@
-import { Invitation, Location } from "types/invitation.module";
+import { Invitation, Location } from "@types/invitation.module";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { initializeApp } from "firebase/app";
